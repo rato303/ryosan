@@ -1,0 +1,48 @@
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name ryosanApp.controller:StoreManagementCtrl
+ * @description
+ * # StoreManagementCtrl
+ * Controller of the ryosanApp
+ */
+angular.module('ryosanApp')
+  .controller('StoreManagementCtrl', function ($scope) {
+
+	 /** 店舗一覧 */
+    $scope.tenpoItems = [
+        { tenpoCd : 100, tenpoName : '静内' }
+      , { tenpoCd : 200, tenpoName : '北見' }
+      , { tenpoCd : 300, tenpoName : '帯広' }
+    ];
+
+    /** 編集中の店舗コード */
+    $scope.editTenpoCd = '';
+
+    /** 編集中の店舗名 */
+    $scope.editTenpoName = '';
+
+    /**
+     * 店舗編集ダイアログを表示します。
+     */
+    $scope.showStoreDialog = function() {
+      $('#storeDialog').modal({backdrop : 'static'});
+    };
+
+    /**
+     * 店舗情報を削除します。
+     */
+    $scope.storeRowDel = function(clickRowIndex) {
+    	$scope.tenpoItems.splice(clickRowIndex, 1);
+    };
+
+    /**
+     * 店舗情報を追加します。
+     */
+    $scope.addStore = function() {
+    	$scope.tenpoItems.push({tenpoCd : $scope.editTenpoCd, tenpoName : $scope.editTenpoName});
+    	$('#storeDialog').modal('hide');
+    }
+
+  });

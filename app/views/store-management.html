@@ -1,0 +1,118 @@
+<div class="container">
+
+	<div class="row col-sm-12" ng-include="'views/templates/menu.html'"></div>
+
+	<div class="row col-sm-12" ng-controller="StoreManagementCtrl">
+
+		<div class="row col-sm-12 btn-group">
+			<button type="button" class="btn btn-primary" ng-click="showStoreDialog()">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				追加
+			</button>
+		</div>
+
+		<div class="row col-sm-12 table-responsive">
+
+			<table id="storeTable" class="table table-striped table-hover">
+
+				<thead>
+					<tr>
+						<th>
+							店舗コード
+						</th>
+						<th>
+							店舗名
+						</th>
+						<th>
+							&#12288;
+						</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr ng-repeat="tenpoItem in tenpoItems"
+						 ng-click="setSelected($index)"
+						 ng-dblclick="showEditStoreDialog()"
+						 ng-class="{success : this == selectedRow}">
+						<td>
+							{{tenpoItem.tenpoCd}}
+						</td>
+						<td>
+							{{tenpoItem.tenpoName}}
+						</td>
+						<td class="text-left">
+							<a href="javascript:void(0)" ng-click="showTenpoDeleteConfirm($index)">
+								<span class="glyphicon glyphicon-remove"></span>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+
+			</table>
+
+		</div>
+
+		<div id="confirm" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-heaer bg-warning">
+
+					</div>
+					<div class="modal-body bg-warning">
+						店舗名[{{confirmTenpoName}}]を削除しますか？
+					</div>
+					<div class="modal-footer bg-warning">
+						<button type="button" class="btn btn-danger" ng-click="deleteTenpoRow()">削除</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">キャンセル</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="storeDialog" class="modal fade">
+
+			<div class="modal-dialog">
+
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<h4>
+							店舗登録
+						</h4>
+					</div>
+
+					<div class="modal-body">
+
+						<form class="form">
+
+							<div class="form-group">
+								<label>
+									店舗コード
+								</label>
+								<input type="text" class="form-controle" ng-model="editTenpoCd" />
+							</div>
+
+							<div class="form-group">
+								<label>
+									店舗名
+								</label>
+								<input type="text" class="form-controle" ng-model="editTenpoName" />
+							</div>
+
+						</form>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" ng-click="addStore()">追加</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">キャンセル</button>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

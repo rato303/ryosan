@@ -1,0 +1,33 @@
+<div class="navbar navbar-default" ng-controller="MenuCtrl">
+  <ul class="nav navbar-nav">
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+        メニュー
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="#">
+            売上入力
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" ng-click="showSalesReference()">
+            売上照会
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="javascript:void(0)" ng-click="showEmployeeManagement()">
+            従業員管理
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" ng-click="showStoreManagement()">
+            店舗管理
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
