@@ -8,14 +8,12 @@
  * Controller of the ryosanApp
  */
 angular.module('ryosanApp')
-  .controller('StoreManagementCtrl', function ($scope) {
+  .controller('StoreManagementCtrl', function ($scope, storeList) {
 
 	 /** 店舗一覧 */
-    $scope.tenpoItems = [
-        { tenpoCd : 100, tenpoName : '静内' }
-      , { tenpoCd : 200, tenpoName : '北見' }
-      , { tenpoCd : 300, tenpoName : '帯広' }
-    ];
+	 storeList.getAllData().then(function(res) {
+		 $scope.tenpoItems = res.data;
+	 });
 
     /** 編集中の店舗コード */
     $scope.editTenpoCd = '';
@@ -32,7 +30,7 @@ angular.module('ryosanApp')
     /**
      * クリックされた行を保持します。
      */
-    $scope.setSelected = function (index) {
+    $scope.setSelected = function(index) {
     	$scope.selectedRow = this;
     };
 
@@ -58,7 +56,7 @@ angular.module('ryosanApp')
     };
 
     /**
-     * 店舗情報を削除確認ダイアログを表示します。
+     * 店舗情報削除確認ダイアログを表示します。
      */
     $scope.showTenpoDeleteConfirm = function(clickRowIndex) {
     	$scope.confirmTenpoName = this.tenpoItem.tenpoName;
@@ -77,8 +75,11 @@ angular.module('ryosanApp')
      * 店舗情報を追加します。
      */
 	$scope.addStore = function() {
-		$scope.tenpoItems.push({tenpoCd : $scope.editTenpoCd, tenpoName : $scope.editTenpoName});
+		$scope.tenpoItems.push({
+			'tenpoCd' : $scope.editTenpoCd,
+			'tenpoName' : $scope.editTenpoName
+			});
     	$('#storeDialog').modal('hide');
-    }
+    };
 
   });

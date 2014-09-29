@@ -15,7 +15,9 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ngMockE2E',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -31,10 +33,6 @@ angular
         templateUrl: 'views/index.html',
         controller: 'IndexCtrl'
       })
-      .when('/sales-reference', {
-        templateUrl: 'views/sales-reference.html',
-        controller: 'SalesReferenceCtrl'
-      })
       .when('/employee-management', {
         templateUrl: 'views/employee-management.html',
         controller: 'EmployeeManagementCtrl'
@@ -42,6 +40,30 @@ angular
       .when('/store-management', {
         templateUrl: 'views/store-management.html',
         controller: 'StoreManagementCtrl'
+      })
+      .when('/purchase-management', {
+        templateUrl: 'views/purchase-management.html',
+        controller: 'PurchaseManagementCtrl'
+      })
+      .when('/sales-management', {
+        templateUrl: 'views/sales-management.html',
+        controller: 'SalesManagementCtrl'
+      })
+      .when('/item-of-expense-management', {
+        templateUrl: 'views/item-of-expense-management.html',
+        controller: 'ItemOfExpenseManagementCtrl'
+      })
+      .when('/item-management', {
+        templateUrl: 'views/item-management.html',
+        controller: 'ItemManagementCtrl'
+      })
+      .when('/vendor-management', {
+        templateUrl: 'views/vendor-management.html',
+        controller: 'VendorManagementCtrl'
+      })
+      .when('/role-management', {
+        templateUrl: 'views/role-management.html',
+        controller: 'RoleManagementCtrl'
       })
       .otherwise({
         redirectTo: '/'

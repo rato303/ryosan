@@ -41,7 +41,10 @@
 							{{tenpoItem.tenpoName}}
 						</td>
 						<td class="text-left">
-							<a href="javascript:void(0)" ng-click="showTenpoDeleteConfirm($index)">
+							<a href="javascript:void(0)" class="btn" ng-click="showEditStoreDialog()">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</a>
+							<a href="javascript:void(0)" class="btn" ng-click="showTenpoDeleteConfirm($index)">
 								<span class="glyphicon glyphicon-remove"></span>
 							</a>
 						</td>

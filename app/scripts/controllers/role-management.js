@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name ryosanApp.controller:SalesReferenceCtrl
+ * @name ryosanApp.controller:RoleManagementCtrl
  * @description
- * # SalesReferenceCtrl
+ * # RoleManagementCtrl
  * Controller of the ryosanApp
  */
 angular.module('ryosanApp')
-  .controller('SalesReferenceCtrl', function ($scope) {
+  .controller('RoleManagementCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

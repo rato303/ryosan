@@ -1,21 +1,30 @@
-<div ng-include="'views/templates/menu.html'"></div>
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover">
-      <thead>
-        <tr>
-          <th>
-            従業員名
-          </th>
-          <th>
-            役職
-          </th>
-        </tr>
-      </thead>
-      <tbody ng-repeat="employee in employeeItems">
-        <tr>
-          <td>{{employee.employeeName}}</td>
-          <td>{{employee.yakushoku}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="row col-sm-12" ng-include="'views/templates/menu.html'"></div>
+<div class="row col-sm-12" ng-controller="EmployeeManagementCtrl">
+
+	<div class="table-responsive">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>
+						従業員名
+					</th>
+					<th>
+						役職
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr ng-repeat="employee in employeeItems">
+					<td>
+						{{employee.employeeName}}
+					</td>
+					<td>
+						{{employee.yakushoku}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+</div>

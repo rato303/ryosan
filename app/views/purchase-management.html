@@ -1,0 +1,162 @@
+<div class="container">
+
+	<div class="row col-sm-12" ng-include="'views/templates/menu.html'"></div>
+
+	<div class="row col-sm-12" ng-controller="PurchaseManagementCtrl">
+
+		<div class="row col-sm-12 btn-group">
+			<button type="button" class="btn btn-primary" ng-click="showPurchaseDialog()">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				追加
+			</button>
+		</div>
+
+		<div class="row col-sm-12 table-responsive">
+
+			<table id="purchaseTable" class="table table-striped table-hover">
+
+				<thead>
+					<tr>
+						<th>
+							店舗コード
+						</th>
+						<th>
+							仕入日
+						</th>
+						<th>
+							商品名
+						</th>
+						<th>
+							単価
+						</th>
+						<th>
+							数量
+						</th>
+						<th>
+							&#12288;
+						</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr ng-repeat="purchaseItem in purchaseItems"
+						 ng-click="setSelected($index)"
+						 ng-dblclick="showEditPurchaseDialog()"
+						 ng-class="{success : this == selectedRow}">
+						 <td>
+						 	{{purchaseItem.tenpoCd}}
+						 </td>
+						 <td>
+						 	{{purchaseItem.purchaseDate}}
+						 </td>
+						 <td>
+						 	{{purchaseItem.merchandiseName}}
+						 </td>
+						 <td>
+						 	{{purchaseItem.unitPrice}}
+						 </td>
+						 <td>
+						 	{{purchaseItem.quantity}}
+						 </td>
+						<td class="text-left">
+							<a href="javascript:void(0)" class="btn" ng-click="showEditPurchaseDialog()">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</a>
+							<a href="javascript:void(0)" class="btn" ng-click="showPurchaseDeleteConfirm($index)">
+								<span class="glyphicon glyphicon-remove"></span>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+
+			</table>
+
+		</div>
+
+		<div id="confirm" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header bg-warning">
+
+					</div>
+					<div class="modal-body bg-warning">
+						仕入情報を削除しますか？
+					</div>
+					<div class="modal-footer bg-warning">
+						<button type="button" class="btn btn-danger" ng-click="deletePurchaseRow()">削除</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">キャンセル</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="purchaseDialog" class="modal fade">
+
+			<div class="modal-dialog">
+
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<h4>
+							仕入情報登録
+						</h4>
+					</div>
+
+					<div class="modal-body">
+						<form class="form">
+
+							<div class="form-group">
+
+								<label>
+									店舗
+								</label>
+								<input type="text" class="form-controle" ng-model="editTenpoCd" />
+
+							</div>
+
+							<div class="form-group">
+
+								<label>
+									仕入日
+								</label>
+								<input type="text" class="form-controle" ng-model="editPurchaseDate" />
+							</div>
+
+							<div class="form-group">
+								<label>
+									商品名
+								</label>
+								<input type="text" class="form-controle" ng-model="editMerchandiseName" />
+							</div>
+
+							<div class="form-group">
+								<label>
+									単価
+								</label>
+								<input type="text" class="form-controle" ng-model="editUnitPrice" />
+							</div>
+
+							<div class="form-group">
+								<label>
+									数量
+								</label>
+								<input type="text" class="form-controle" ng-model="editQuantity" />
+							</div>
+
+						</form>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" ng-click="addPurchase()">追加</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">キャンセル</button>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
