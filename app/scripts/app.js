@@ -37,8 +37,8 @@ angular
         templateUrl: 'views/employee-management.html',
         controller: 'EmployeeManagementCtrl'
       })
-      .when('/store-management', {
-        templateUrl: 'views/store-management.html',
+      .when('/store/store-management', {
+        templateUrl: 'views/store/store-management.html',
         controller: 'StoreManagementCtrl'
       })
       .when('/purchase-management', {

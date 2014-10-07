@@ -28,7 +28,7 @@ angular.module('ryosanApp')
      * 店舗管理画面に遷移します。
      */
    $scope.showStoreManagement = function() {
-     $location.path('/store/store-management');
+     $location.path('store-management');
     };
 
      /**

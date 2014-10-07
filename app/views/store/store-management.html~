@@ -31,14 +31,14 @@
 
 				<tbody>
 					<tr ng-repeat="tenpoItem in tenpoItems"
-						 ng-click="setSelected($index)"
+						 ng-click="setSelected(tenpoItem)"
 						 ng-dblclick="showEditStoreDialog()"
-						 ng-class="{success : this == selectedRow}">
+						 ng-class="{success : tenpoItem == selectedRow}">
 						<td>
-							{{tenpoItem.tenpoCd}}
+							{{tenpoItem.storeCd}}
 						</td>
 						<td>
-							{{tenpoItem.tenpoName}}
+							{{tenpoItem.storeName}}
 						</td>
 						<td class="text-left">
 							<a href="javascript:void(0)" class="btn" ng-click="showEditStoreDialog()">
@@ -70,50 +70,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-
-		<div id="storeDialog" class="modal fade">
-
-			<div class="modal-dialog">
-
-				<div class="modal-content">
-
-					<div class="modal-header">
-						<h4>
-							店舗登録
-						</h4>
-					</div>
-
-					<div class="modal-body">
-
-						<form class="form">
-
-							<div class="form-group">
-								<label>
-									店舗コード
-								</label>
-								<input type="text" class="form-controle" ng-model="editTenpoCd" />
-							</div>
-
-							<div class="form-group">
-								<label>
-									店舗名
-								</label>
-								<input type="text" class="form-controle" ng-model="editTenpoName" />
-							</div>
-
-						</form>
-					</div>
-
-					<div class="modal-footer">
-						<button type="button" class="btn btn-success" ng-click="addStore()">追加</button>
-						<button type="button" class="btn btn-primary" data-dismiss="modal">キャンセル</button>
-					</div>
-
-				</div>
-
-			</div>
-
 		</div>
 
 	</div>

@@ -1,0 +1,18 @@
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name ryosanApp.controller:StoreEditDialogCtrl
+ * @description
+ * # StoreEditDialogCtrl
+ * Controller of the ryosanApp
+ */
+angular.module('ryosanApp')
+	.controller('StoreEditDialogCtrl', function ($scope) {
+		$scope.tenpoCd = '';
+		$scope.tenpoName = '';
+		
+		$scope.addStore = function() {
+		};
+		
+  });
