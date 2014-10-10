@@ -10,18 +10,18 @@
 angular.module('ryosanApp')
 	.controller('StoreManagementCtrl', ['$scope', 'store', 'storeList', '$modal',
 		function ($scope, store, storeList, $modal) {
-	
+
 			/** 店舗一覧 */
 			storeList.getAllData().then(function(res) {
 				$scope.tenpoItems = res.data;
 			});
-	
+
 			/** 選択中の行情報 */
 			$scope.selectedRow = null;
-			
+
 			/** 削除確認時の店舗名 */
 			$scope.confirmTenpoName = '';
-	
+
 			/**
 			 * クリックされた行を保持します。
 			 *
@@ -31,7 +31,7 @@ angular.module('ryosanApp')
 			$scope.setSelected = function(tenpoItem) {
 				$scope.selectedRow = tenpoItem;
 			};
-	
+
 			/**
 			 * 選択した店舗情報を編集するダイアログを表示します。
 			 */
@@ -53,7 +53,7 @@ angular.module('ryosanApp')
 					}
 				});
 			};
-			
+
 			/**
 			 * 店舗情報追加ダイアログを表示します。
 			 */
@@ -72,21 +72,13 @@ angular.module('ryosanApp')
 					}
 				});
 			};
-	
-			/**
-			 * 店舗情報削除確認ダイアログを表示します。
-			 */
-			$scope.showTenpoDeleteConfirm = function(clickRowIndex) {    	
-				$scope.confirmTenpoName = this.tenpoItem.tenpoName;
-				$('#confirm').modal({backdrop : 'static'});
-			};
-	
+
 			/**
 			 * 店舗情報を削除します。
 			 */
-			$scope.deleteTenpoRow = function() {
-				$scope.tenpoItems.splice($scope.selectedRow.index, 1);
+			$scope.deleteTenpoRow = function(index) {
+				$scope.tenpoItems.splice(index, 1);
 				$('#confirm').modal('hide');
 			};
-		
+
 	}]);

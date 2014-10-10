@@ -44,7 +44,9 @@
 							<a href="javascript:void(0)" class="btn" ng-click="showEditStoreDialog(tenpoItem)">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</a>
-							<a href="javascript:void(0)" class="btn" ng-click="showTenpoDeleteConfirm($index)">
+							<a href="javascript:void(0)" class="btn"
+							   rt-alert-click="deleteTenpoRow($index)"
+							   rt-alert-message="店舗({{tenpoItem.storeName}})を削除しますか？">
 								<span class="glyphicon glyphicon-remove"></span>
 							</a>
 						</td>
@@ -53,23 +55,6 @@
 
 			</table>
 
-		</div>
-
-		<div id="confirm" class="modal fade">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-heaer bg-warning">
-
-					</div>
-					<div class="modal-body bg-warning">
-						店舗名[{{confirmTenpoName}}]を削除しますか？
-					</div>
-					<div class="modal-footer bg-warning">
-						<button type="button" class="btn btn-danger" ng-click="deleteTenpoRow()">削除</button>
-						<button type="button" class="btn btn-primary" data-dismiss="modal">キャンセル</button>
-					</div>
-				</div>
-			</div>
 		</div>
 
 	</div>

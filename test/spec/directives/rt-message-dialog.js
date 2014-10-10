@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: StoreTable', function () {
+describe('Directive: rtMessageDialog', function () {
 
   // load the directive's module
   beforeEach(module('ryosanApp'));
@@ -13,8 +13,8 @@ describe('Directive: StoreTable', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<-store-table></-store-table>');
+    element = angular.element('<rt-message-dialog></rt-message-dialog>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the StoreTable directive');
+    expect(element.text()).toBe('this is the rtMessageDialog directive');
   }));
 });
