@@ -36,41 +36,14 @@ angular.module('ryosanApp')
 			 * 選択した店舗情報を編集するダイアログを表示します。
 			 */
 			$scope.showEditStoreDialog = function(tenpoItem) {
-				/*
-				 * TODO 追加時は空オブジェクトを編集時は項目を渡すようにしてService化する
-				 */
-				var modalInstance = $modal.open({
-					templateUrl: 'views/store/dialog/store-edit.html',
-					controller: 'StoreEditCtrl',
-					'backdrop': 'static',
-					resolve: {
-						items: function() {
-							return $scope.tenpoItems;
-						},
-						item: function() {
-							return tenpoItem;
-						}
-					}
-				});
+				$scope.showDialog(tenpoItem);
 			};
 
 			/**
 			 * 店舗情報追加ダイアログを表示します。
 			 */
 			$scope.showStoreDialog = function() {
-				var modalInstance = $modal.open({
-					templateUrl: 'views/store/dialog/store-edit.html',
-					controller: 'StoreEditCtrl',
-					'backdrop': 'static',
-					resolve: {
-						items: function() {
-							return $scope.tenpoItems;
-						},
-						item: function() {
-							return store;
-						}
-					}
-				});
+				$scope.showDialog(store);
 			};
 
 			/**
@@ -79,6 +52,29 @@ angular.module('ryosanApp')
 			$scope.deleteTenpoRow = function(index) {
 				$scope.tenpoItems.splice(index, 1);
 				$('#confirm').modal('hide');
+			};
+
+			/**
+			 * 店舗追加(編集)ダイアログを表示します。
+			 *
+			 * @param formModel ダイアログに表示するモデル
+			 */
+			$scope.showDialog = function(formModel) {
+
+				var modalInstance = $modal.open({
+					templateUrl: 'views/store/dialog/store-edit.html',
+					controller: 'StoreEditCtrl',
+					'backdrop': 'static',
+					resolve: {
+						items: function() {
+							return $scope.tenpoItems;
+						},
+						item: function() {
+							return formModel;
+						}
+					}
+				});
+
 			};
 
 	}]);
