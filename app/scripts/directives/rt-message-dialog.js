@@ -10,7 +10,9 @@ angular.module('ryosanApp')
 	.factory('rtAlertModel', function() {
 
 		var properties = {
-			rtClass: 'bg-warning',
+			rtBgClass: 'bg-warning',
+			okBtnClass: 'btn-success',
+			cancelBtnClass: 'btn-info',
 			okLabel: 'OK',
 			cancelLabel: 'キャンセル',
 			rtAlertTitle: '',
@@ -19,7 +21,9 @@ angular.module('ryosanApp')
 		};
 
 		return {
-			rtClass: properties.rtClass,
+			rtBgClass: properties.rtBgClass,
+			okBtnClass: properties.okBtnClass,
+			cancelBtnClass: properties.cancelBtnClass,
 			okLabel: properties.okLabel,
 			cancelLabel: properties.cancelLabel,
 			rtAlertTitle: properties.rtAlertTitle,
@@ -56,20 +60,6 @@ angular.module('ryosanApp')
 	}])
 	.directive('rtAlertClick', ['$rootScope', '$parse', '$modal', 'rtAlertModel', function ($rootScope, $parse, $modal, rtAlertModel) {
 
-		var alertHtml =
-					'<div class="modal-content">' +
-						'<div class="modal-heaer {{config.rtClass}}">' +
-							'{{config.rtAlertTitle}}' +
-						'</div>' +
-						'<div class="modal-body {{config.rtClass}}">' +
-							'{{config.rtAlertMessage}}' +
-						'</div>' +
-						'<div class="modal-footer {{config.rtClass}}">' +
-							'<button type="button" class="btn btn-danger" ng-click="clickOk()">{{config.okLabel}}</button>' +
-							'<button type="button" class="btn btn-primary" ng-click="clickCancel()">{{config.cancelLabel}}</button>' +
-						'</div>' +
-					'</div>';
-
 		return {
 			restrict: 'A',
 			scope: {
@@ -83,7 +73,7 @@ angular.module('ryosanApp')
 
 					//var modalInstance = $modal.open({
 					$modal.open({
-						template: alertHtml,
+						templateUrl: 'scripts/directives/rt-message-dialog.html',
 						controller: 'RtAlertClickCtrl',
 					});
 
